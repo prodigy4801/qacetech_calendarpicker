@@ -2,6 +2,14 @@
 
 A Challenge designed for accessment by Qace Tech to build a Calendar Picker
 
-This template should help get you started developing with Vue 3 and TypeScript in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+This boiler template is Vue 3, TypeScript in Vite and Tailwind CSS using SASS. The template uses Vue 3 `<script setup>` SFCs.
 
-Learn more about the recommended Project Setup and IDE Support in the [Vue Docs TypeScript Guide](https://vuejs.org/guide/typescript/overview.html#project-setup).
+## Installation Guide line
+
+```bash
+1. Clone the main repository with the following command: git clone https://github.com/prodigy4801/qacetech_calendarpicker.git
+2. Change your directory to the cloned application directory
+3. Use this Command to install all the Package Dependencies: npm install
+4. Then to run the application use: npm run dev
+5. Checkout for the localhost Url with its assigned Port number, then hold down CTRL and click the URL link.
+```
