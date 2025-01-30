@@ -17,7 +17,7 @@ import QCCalendarPicker from './components/custom/QCCalendarPicker.vue';
               <QCCalendarPicker placeholder="Select Date" />
             </div>
             <div class="label-information">
-              <label class="label-information--stmt">Select by Range</label>
+              <label class="label-information--stmt">Select by Range(Start and End Date)</label>
               <QCCalendarPicker placeholder="Select Date" range />
             </div>
             <div class="label-information">
@@ -25,12 +25,16 @@ import QCCalendarPicker from './components/custom/QCCalendarPicker.vue';
               <QCCalendarPicker placeholder="Select Date" time-picker />
             </div>
             <div class="label-information">
-              <label class="label-information--stmt">Select by Single and by Range</label>
+              <label class="label-information--stmt">Select by Single Date or by Range</label>
               <QCCalendarPicker placeholder="Select Date" model-auto />
             </div>
             <div class="label-information">
               <label class="label-information--stmt">Select by Multiple Calendar Dsiplay</label>
               <QCCalendarPicker placeholder="Select Date" multi-calendars />
+            </div>
+            <div class="label-information">
+              <label class="label-information--stmt">Select by Multiple Calendar Dsiplay</label>
+              <QCCalendarPicker placeholder="Select Date" is-preset-date />
             </div>
           </div>
         </LabelDisplay>

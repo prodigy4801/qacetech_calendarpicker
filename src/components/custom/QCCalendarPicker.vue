@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import VueDatePicker from '@vuepic/vue-datepicker';
 import '@vuepic/vue-datepicker/dist/main.css';
-
-import type { PresetDate } from '../../models/calendarpicker.model';
+import { endOfMonth, endOfYear, startOfMonth, startOfYear, subMonths, subDays, subWeeks } from 'date-fns';
 
 interface QCCalendarProps {
   placeholder?: string;
@@ -11,7 +10,7 @@ interface QCCalendarProps {
   multiCalendars?: boolean;
   timePicker?: boolean;
   modelAuto?: boolean;
-  presetDate?: PresetDate | null;
+  isPresetDate?: boolean;
 }
 defineEmits<{
   (e: 'update:modelValue', value: string): void;
@@ -26,11 +25,30 @@ const props = withDefaults(defineProps<QCCalendarProps>(), {
   placeholder: '',
   timePicker: false,
   modelAuto: false,
-  PresetDate: null,
+  presetDate: false,
 });
 const rangeValue = computed(() => {
-  return props.modelAuto || props.multiCalendars ? true : props.range;
+  return props.modelAuto || props.multiCalendars || props.isPresetDate ? true : props.range;
 });
+const presetDate = props.isPresetDate
+  ? ref([
+      { label: 'Today', value: [new Date(), new Date()] },
+      {
+        label: 'Last Week',
+        value: [new Date(), subDays(new Date(), 7)],
+      },
+      {
+        label: 'Next Week',
+        value: [new Date(), subWeeks(new Date(), -1)],
+      },
+      { label: 'This month', value: [startOfMonth(new Date()), endOfMonth(new Date())] },
+      {
+        label: 'Last month',
+        value: [startOfMonth(subMonths(new Date(), 1)), endOfMonth(subMonths(new Date(), 1))],
+      },
+      { label: 'This year', value: [startOfYear(new Date()), endOfYear(new Date())] },
+    ])
+  : undefined;
 </script>
 
 <template>
@@ -41,7 +59,20 @@ const rangeValue = computed(() => {
     :multi-calendars="multiCalendars"
     :time-picker="timePicker"
     :model-auto="modelAuto"
-  ></VueDatePicker>
+    :preset-dates="presetDate"
+  >
+    <template v-if="isPresetDate" #preset-date-range-button="{ label, value, presetDate }">
+      <span
+        role="button"
+        :tabindex="0"
+        @click="presetDate(value)"
+        @keyup.enter.prevent="presetDate(value)"
+        @keyup.space.prevent="presetDate(value)"
+      >
+        {{ label }}
+      </span>
+    </template>
+  </VueDatePicker>
 </template>
 
 <style scoped></style>
