@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import LabelDisplay from './components/preview/LabelDisplay.vue';
+import QCCalendarPicker from './components/custom/QCCalendarPicker.vue';
 </script>
 
 <template>
@@ -10,7 +11,28 @@ import LabelDisplay from './components/preview/LabelDisplay.vue';
           title="Qace Tech - Calendar Picker"
           description="Customized Calendar Picker to display Date and Time"
         >
-          <div class="details-content__card-body"></div>
+          <div class="details-content__card-body">
+            <div class="label-information">
+              <label class="label-information--stmt">Normal Usage</label>
+              <QCCalendarPicker placeholder="Select Date" />
+            </div>
+            <div class="label-information">
+              <label class="label-information--stmt">Select by Range</label>
+              <QCCalendarPicker placeholder="Select Date" range />
+            </div>
+            <div class="label-information">
+              <label class="label-information--stmt">Select by Time Only</label>
+              <QCCalendarPicker placeholder="Select Date" time-picker />
+            </div>
+            <div class="label-information">
+              <label class="label-information--stmt">Select by Single and by Range</label>
+              <QCCalendarPicker placeholder="Select Date" model-auto />
+            </div>
+            <div class="label-information">
+              <label class="label-information--stmt">Select by Multiple Calendar Dsiplay</label>
+              <QCCalendarPicker placeholder="Select Date" multi-calendars />
+            </div>
+          </div>
         </LabelDisplay>
       </div>
     </div>
@@ -29,6 +51,12 @@ import LabelDisplay from './components/preview/LabelDisplay.vue';
       }
       &-body {
         @apply grid grid-cols-1 md:grid-cols-3 gap-5 p-4;
+        .label-information {
+          @apply flex flex-col gap-1;
+          &--stmt {
+            @apply text-sm font-normal;
+          }
+        }
       }
     }
   }

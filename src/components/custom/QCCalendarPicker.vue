@@ -29,7 +29,7 @@ const props = withDefaults(defineProps<QCCalendarProps>(), {
   PresetDate: null,
 });
 const rangeValue = computed(() => {
-  return props.modelAuto ? true : props.range;
+  return props.modelAuto || props.multiCalendars ? true : props.range;
 });
 </script>
 
