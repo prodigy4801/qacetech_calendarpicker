@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    <h1>Qace Technology</h1>
+    <h1 class="text-xl font-semibold">Qace Technology Accessment</h1>
   </div>
 </template>
 
